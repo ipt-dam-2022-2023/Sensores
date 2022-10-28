@@ -24,7 +24,7 @@ class MyViewPagerAdapter : FragmentStateAdapter {
         when(position) {
             0 -> return Fragment1(parent)
             1 -> return Fragment2()
-            2 -> return Fragment3()
+            2 -> return Fragment3(parent)
             else -> return Fragment1(parent)
         }
     }
