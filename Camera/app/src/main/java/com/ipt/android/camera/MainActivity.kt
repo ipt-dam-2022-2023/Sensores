@@ -30,16 +30,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             capturePhoto()
         }
-
-
-
     }
-
-
-    var image_uri: Uri? = null
-    private val RESULT_LOAD_IMAGE = 123
-    val IMAGE_CAPTURE_CODE = 654
-
     fun capturePhoto() {
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(cameraIntent, REQUEST_CODE)
@@ -53,17 +44,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
-        try {
-            val parcelFileDescriptor = contentResolver.openFileDescriptor(selectedFileUri, "r")
-            val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor
-            val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
-            parcelFileDescriptor.close()
-            return image
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return null
-    }
 
 }
