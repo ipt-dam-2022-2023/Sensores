@@ -7,11 +7,12 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
-    val REQUEST_CODE = 200
+
     lateinit var button:Button
     lateinit var imageView:ImageView
 
@@ -26,17 +27,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun capturePhoto() {
+
+
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, REQUEST_CODE)
+        resultLauncher.launch(cameraIntent)
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE && data != null){
-            imageView.setImageBitmap(data.extras?.get("data") as Bitmap)
+    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // There are no request codes
+            val data: Intent? = result.data
+            imageView.setImageBitmap(data?.extras?.get("data") as Bitmap)
         }
     }
-
 
 }
