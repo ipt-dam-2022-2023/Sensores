@@ -41,16 +41,9 @@ class MainActivity : AppCompatActivity() {
     val IMAGE_CAPTURE_CODE = 654
 
     fun capturePhoto() {
-       // val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-       // startActivityForResult(cameraIntent, REQUEST_CODE)
-
-        val values = ContentValues()
-        values.put(MediaStore.Images.Media.TITLE, "New Picture")
-        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera")
-        image_uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
-        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
+        startActivityForResult(cameraIntent, REQUEST_CODE)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
