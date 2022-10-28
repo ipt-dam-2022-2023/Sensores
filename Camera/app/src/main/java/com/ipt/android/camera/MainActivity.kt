@@ -1,19 +1,13 @@
 package com.ipt.android.camera
 
 import android.app.Activity
-import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import java.io.FileDescriptor
-import java.io.IOException
 
 
 class MainActivity : AppCompatActivity() {
