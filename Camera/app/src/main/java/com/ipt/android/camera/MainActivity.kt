@@ -27,19 +27,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
     fun capturePhoto() {
-
-
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         resultLauncher.launch(cameraIntent)
-
     }
-
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            // There are no request codes
             val data: Intent? = result.data
             imageView.setImageBitmap(data?.extras?.get("data") as Bitmap)
         }
     }
-
 }
