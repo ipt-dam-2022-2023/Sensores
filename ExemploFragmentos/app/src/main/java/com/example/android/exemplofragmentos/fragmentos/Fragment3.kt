@@ -35,8 +35,6 @@ class Fragment3 : Fragment {
 
     private var frame: ImageView? = null
     private var imageUri: Uri? = null
-    private val RESULT_LOAD_IMAGE = 123
-    private val IMAGE_CAPTURE_CODE = 654
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
